@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Test {
@@ -10,5 +11,16 @@ public class Test {
         System.out.println("请输入您的密码");
         String password=sc.next();
         System.out.println("您的密码为" + password);
+    }
+    File file= new File("");
+    ReadExcel readExcel= new ReadExcel();
+    User users[]=readExcel.readExcel(file);
+    for(int i =0;i<users.length;i++){
+        if(username.equals(users[i].getUsername()) && password.equals(users[i].getPassword()))
+        {
+            System.out.println("登陆成功");
+        }else {
+            System.out.println("登陆失败");
+        }
     }
 }
