@@ -7,12 +7,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.DecimalFormat;
 
 public class ReadExcel {
-    public User[] readExcel(File file) {
+    public User[] readExcel(InputStream in) {
         User users[] = null;
         try {
-            XSSFWorkbook xw = new XSSFWorkbook(new FileInputStream(file));
+            XSSFWorkbook xw = new XSSFWorkbook(in);
             XSSFSheet xs = xw.getSheetAt(0);
             users = new User[xs.getLastRowNum()];
             for (int j = 1; j <= xs.getLastRowNum(); j++) {
@@ -53,10 +55,11 @@ public class ReadExcel {
                 value = "";
                 break;
             case BOOLEAN:
-                value = cell.getBooleanCellValue() + "";
+                value = cell.getBooleanCellValue() + "";//非字符串类型后加“”变成字符串类型
                 break;
             case NUMERIC:
-                value = cell.getNumericCellValue() + "";
+                DecimalFormat df=new DecimalFormat("#");
+                value=df.format(cell.getNumericCellValue());
                 break;
             case FORMULA:
                 value = cell.getCellFormula();
