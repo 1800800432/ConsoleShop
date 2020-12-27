@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -15,12 +14,15 @@ public class Test {
             String password = sc.next();
             System.out.println("您的密码为" + password);
             //File file= new File("C:\\Users\\lenovo\\IdeaProjects\\ConsoleShop\\User.xls");
-            InputStream in = Class.forName("Test").getResourceAsStream("/User.xls");
+            InputStream inusers = Class.forName("Test").getResourceAsStream("/users.xls");
+            InputStream inproduct = Class.forName("Test").getResourceAsStream("/products.xls");
 
-            ReadExcel readExcel = new ReadExcel();
-            User users[] = readExcel.readExcel(in);
+            ReadProductExcel readProductExcel =new ReadProductExcel();
+            Product[] products=readProductExcel.readExcel(inproduct);
+            ReadUsersExcel readUsersExcel = new ReadUsersExcel();
+            User[] users = readUsersExcel.readExcel(inusers);
             for (int i = 0; i < users.length; i++) {
-                if (username.equals(users[i].getUsername()) && password.equals(users[i].getPassword())) {
+                if (username.equals(users[i].getUsername().trim()) && password.equals(users[i].getPassword())) {
                     System.out.println("登陆成功");
                     bool = false;
                     break;
