@@ -25,13 +25,27 @@ public class Test {
                     System.out.println("登陆成功");
                     /*读取商品信息*/
                     ReadProductExcel readProductExcel =new ReadProductExcel();
-                    Product[] products=readProductExcel.readExcel(inproduct);
+                    Product[] products=readProductExcel.getAllproducts(inproduct);
 
                     for(Product product:products){
                         System.out.print("\t"+product.getProductid());
                         System.out.print("\t"+product.getProductname());
                         System.out.print("\t\t"+product.getProductdic());
                         System.out.println("\t\t"+product.getProductpri());
+                    }
+                    /*根据id输出商品信息*/
+                    System.out.println("请输入商品id");
+                    String pId = sc.next();
+                    ReadProductExcel readProductExcel1 =new ReadProductExcel();
+                    inproduct = null;
+                    inproduct = Class.forName("Test").getResourceAsStream("/products.xlsx");
+                    Product product = readProductExcel1.getproductById(pId,inproduct);
+                    if(product!=null){
+                        System.out.println("找到商品");
+                        System.out.print("\t"+product.getProductid());
+                        System.out.print("\t"+product.getProductname());
+                        System.out.print("\t"+product.getProductdic());
+                        System.out.println("\t"+product.getProductpri());
                     }
                     bool = false;
                     break;
