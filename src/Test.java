@@ -17,8 +17,8 @@ public class Test {
             InputStream inusers = Class.forName("Test").getResourceAsStream("/users.xls");
             InputStream inproduct = Class.forName("Test").getResourceAsStream("/products.xls");
 
-            ReadProductExcel readProductExcel =new ReadProductExcel();
-            Product[] products=readProductExcel.readExcel(inproduct);
+            /*ReadProductExcel readProductExcel =new ReadProductExcel();
+            Product[] products=readProductExcel.readExcel(inproduct);*/
             ReadUsersExcel readUsersExcel = new ReadUsersExcel();
             User[] users = readUsersExcel.readExcel(inusers);
             for (int i = 0; i < users.length; i++) {

@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 public class ReadProductExcel {
     public static void main(String[] args) throws ClassNotFoundException {
-        InputStream in = Class.forName("Test").getResourceAsStream("/products.xls");
+        InputStream in = Class.forName("Test").getResourceAsStream("/products.xlsx");
         Product[] products=new ReadProductExcel().readExcel(in);
         for(Product product:products){
             System.out.println(product.getProductid());
