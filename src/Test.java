@@ -17,13 +17,22 @@ public class Test {
             InputStream inusers = Class.forName("Test").getResourceAsStream("/users.xlsx");
             InputStream inproduct = Class.forName("Test").getResourceAsStream("/products.xlsx");
 
-            /*ReadProductExcel readProductExcel =new ReadProductExcel();
-            Product[] products=readProductExcel.readExcel(inproduct);*/
+
             ReadUsersExcel readUsersExcel = new ReadUsersExcel();
             User[] users = readUsersExcel.readExcel(inusers);
             for (int i = 0; i < users.length; i++) {
                 if (username.equals(users[i].getUsername().trim()) && password.equals(users[i].getPassword())) {
                     System.out.println("登陆成功");
+                    /*读取商品信息*/
+                    ReadProductExcel readProductExcel =new ReadProductExcel();
+                    Product[] products=readProductExcel.readExcel(inproduct);
+
+                    for(Product product:products){
+                        System.out.print("\t"+product.getProductid());
+                        System.out.print("\t"+product.getProductname());
+                        System.out.print("\t\t"+product.getProductdic());
+                        System.out.println("\t\t"+product.getProductpri());
+                    }
                     bool = false;
                     break;
                 } else {

@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class ReadProductExcel {
+    /*数据测试*/
     public static void main(String[] args) throws ClassNotFoundException {
         InputStream in = Class.forName("Test").getResourceAsStream("/products.xlsx");
         Product[] products=new ReadProductExcel().readExcel(in);
