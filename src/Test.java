@@ -14,8 +14,8 @@ public class Test {
             String password = sc.next();
             System.out.println("您的密码为" + password);
             //File file= new File("C:\\Users\\lenovo\\IdeaProjects\\ConsoleShop\\User.xls");
-            InputStream inusers = Class.forName("Test").getResourceAsStream("/users.xls");
-            InputStream inproduct = Class.forName("Test").getResourceAsStream("/products.xls");
+            InputStream inusers = Class.forName("Test").getResourceAsStream("/users.xlsx");
+            InputStream inproduct = Class.forName("Test").getResourceAsStream("/products.xlsx");
 
             /*ReadProductExcel readProductExcel =new ReadProductExcel();
             Product[] products=readProductExcel.readExcel(inproduct);*/
